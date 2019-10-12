@@ -13,9 +13,9 @@ export const smurfHunting = () => dispatch => {
 }
 
 export const smurfCaught = newSmurf => dispatch => {
-    console.log('logging');
+    console.log('submitting', newSmurf);
     axios
         .post(`http://localhost:3333/smurfs`, newSmurf)
-        .then(res => console.log(res))
+        .then(res => dispatch({ type: SMURFS_CAPTURED, payload: res.data }))
         .catch(err => dispatch ({type: SMURFS_GOT_AWAY, payload: err.response}))
 }

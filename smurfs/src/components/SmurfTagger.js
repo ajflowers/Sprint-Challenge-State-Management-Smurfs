@@ -16,8 +16,8 @@ const SmurfTagger = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(newCatch);
-        smurfCaught(newCatch);
+        console.log("logging", newCatch);
+        props.smurfCaught(newCatch);
         setNewCatch({
             name: "",
             age: "",
