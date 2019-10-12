@@ -9,5 +9,13 @@ export const smurfHunting = () => dispatch => {
     axios
         .get(`http://localhost:3333/smurfs`)
         .then(res => dispatch({ type: SMURFS_CAPTURED, payload: res.data }))
-        .catch(err => console.log(err))
+        .catch(err => dispatch ({type: SMURFS_GOT_AWAY, payload: err.response}))
+}
+
+export const smurfCaught = newSmurf => dispatch => {
+    console.log('logging');
+    axios
+        .post(`http://localhost:3333/smurfs`, newSmurf)
+        .then(res => console.log(res))
+        .catch(err => dispatch ({type: SMURFS_GOT_AWAY, payload: err.response}))
 }

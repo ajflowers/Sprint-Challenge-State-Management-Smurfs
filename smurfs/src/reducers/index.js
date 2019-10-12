@@ -1,20 +1,7 @@
 import { CHASING_SMURFS, SMURFS_CAPTURED, SMURFS_GOT_AWAY} from '../actions'
 
 const initialState = {
-    smurfs: [
-        {
-            name: "Dopey",
-            age: 200,
-            height: "5cm",
-            id: 0
-          },
-          {
-            name: "Sleepy",
-            age: 200,
-            height: "5cm",
-            id: 1
-          }
-    ],
+    smurfs: [],
     isHunting: false,
     error: ''
 }
@@ -36,7 +23,9 @@ const reducer = (state = initialState, action) => {
             }
         case SMURFS_GOT_AWAY:
             return {
-                ...state
+                ...state,
+                isHunting: false,
+                error: action.payload
             }
         default:
             return state;

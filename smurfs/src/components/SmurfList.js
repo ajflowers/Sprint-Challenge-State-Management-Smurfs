@@ -10,6 +10,11 @@ const SmurfList = props => {
         props.smurfHunting();
     }, []);
 
+    if (props.isHunting) {
+        return <h2>Hunting for Smurfs...</h2>;
+    }
+
+
     return(
         <div>
             <h2>Smurfs Captured:</h2>
