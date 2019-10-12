@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import SmurfCard from './SmurfCard'
+
+import SmurfCard from './SmurfCard';
+
+import { smurfHunting } from '../actions';
 
 const SmurfList = props => {
+    useEffect(() => {
+        props.smurfHunting();
+    }, []);
+
     return(
         <div>
             <h2>Smurfs Captured:</h2>
@@ -22,4 +29,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { })(SmurfList)
+export default connect(mapStateToProps, { smurfHunting })(SmurfList)
